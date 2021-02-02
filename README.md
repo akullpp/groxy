@@ -19,7 +19,7 @@ BAR=http://localhost:2000
 
 * Requests which paths start with `FOO` (e.g. `foo/baz`) will be forwarded to `http://localhost:1000` (e.g `http://localhost:1000/foo/baz`).
 
-* Requests which paths start with `BAR` (e.g. `bar/baz`) will be forwarded to `http://localhost:2000` (e.g `http://localhost:1000/bar/baz`).
+* Requests which paths start with `BAR` (e.g. `bar/baz`) will be forwarded to `http://localhost:2000` (e.g `http://localhost:2000/bar/baz`).
 
 * Requests which first path segment do not match will be forwarded to the DEFAULT value in `.env` (e.g. `http://localhost:8080`).
 
