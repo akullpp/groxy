@@ -23,6 +23,16 @@ BAR=http://localhost:2000
 
 * Requests which first path segment do not match will be forwarded to the DEFAULT value in `.env` (e.g. `http://localhost:8080`).
 
+You also have the ability to drop the path prefix, by adding `<PREFIX>_DROP_PREFIX=true`, e.g.
+
+```
+FOO=http://localhost:1000
+BAR=http://localhost:2000
+BAR_DROP_PREFIX=true
+```
+
+This will forward requests of `localhost:9999/bar/baz` to `localhost:2000/baz`.
+
 ### Usage
 
 ```

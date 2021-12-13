@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/akullpp/gotenv"
@@ -24,6 +25,15 @@ func handleRequest(w http.ResponseWriter, r *http.Request, dotenv map[string]str
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Rewrite URL
+	rw, _ := strconv.ParseBool(dotenv[id+"_DROP_PREFIX"])
+	if rw {
+		p := "/" + strings.Join(ps[1:], "/")
+		fmt.Printf("Rewriting %v to %v\n", r.URL.Path, p)
+		r.URL.Path = p
+	}
+
 	fmt.Printf("Proxying %v to %v\n", r.URL.Path, t)
 	proxy := &httputil.ReverseProxy{
 		Director: func(req *http.Request) {
